@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phoenicia Diner</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .container {
+	  max-width:900px;
+	  margin:0 auto;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 0;
+      padding: 30px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+	  align-items:flex-start;
+	  font-size:14px;
+	  width:100%;
+    }
+
+    .title {
+      text-align: center;
+    }
+	.title h1{
+	  font-size:40px;
+	  letter-spacing:4px;
+	  margin:20px 0;
+	}
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+	  align-items:stretch;
+    }
+	.content>div{
+	  border-right:1px dotted black;
+	  padding-right:20px;
+	  padding-left:10px
+	}
+	.content>div:last-child{
+	  border-right:none
+	}
+    .order {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .line {
+      display: flex;
+      flex-direction: column;
+	  gap:15px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+	  width:100%;
+    }
+	.item span{
+	  font-size:14px;
+	}
+	.item span:first-child {
+	  padding-right: 10px;
+	}
+	h2{
+	  margin:0;
+	  margin-bottom:10px;
+	}
+	h3{
+	  margin:10px 0 5px 0;
+	}
+	.sub{
+	  display:flex;
+	  flex-direction:column;
+	  gap:10px;
+	  margin-top:25px;
+	}
+	.box{
+	  font-size:12px;
+	  padding:3px 0;
+	  border:none;
+	  border-bottom:1px dotted black;
+	  width:auto;
+	}
+	.left,
+	.right {
+	  display: flex;
+      flex-direction: row;
+      gap: 20px;
+      max-width: 50%;
+    }
+	.left{
+	  justify-content:flex-start;
+	  padding-right:100px;
+	}
+	.right{
+	  justify-content:flex-end;
+	  text-align:right;
+	}
+	.break{
+	  border:none;
+	  border-bottom:1px solid black;
+	}
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <div class="left">
+		<div class="box">CATSKILL MTN. RAILROAD</div>
+		<div class="box">EMPIRE STATE RAILWAY MUSEUM</div>
+	</div>
+    <div class="right">
+		<div class="box">Stay for the food!</div>
+		<div class="box">845.688.9957</div>
+	</div>
+  </div>
+  <div class="title">
+    <h1>PHOENICIA </h1>
+	<h1>DINER</h1>
+  </div>
+  <div class="content">
+    <div class="order">
+      <div class="line">
+        <h2 class="break">Breakfast</h2>
+
+        <div class="item">
+          <span>Biscuits & Gravy</span>
+          <span>8</span>
+        </div>
+
+        <div class="item">
+          <span>French Toast</span>
+          <span>8</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="order">
+	  <div style="height:40px;"></div>
+      <div class="line">
+        <h2>Sides</h2>
+
+        <div class="item">
+          <span>Oatmeal</span>
+          <span>5</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="order">
+      <div class="line">
+        <h2 class="break">Lunch</h2>
+		<div class="sub">
+			<h3>Sandwiches</h3>
+			<div class="item">
+				<span>BLT</span>
+				<span>8</span>
+			</div>
+			<div class="item">
+				<span>turkey club</span>
+				<span>12</span>
+			</div>
+		</div>
+		<div class="sub">
+			<h3>Salads</h3>
+			<div class="item">
+				<span>House Salad</span>
+				<span>10</span>
+			</div>
+			<div class="item">
+				<span>Quinoa Salad</span>
+				<span>11</span>
+			</div>
+		</div>
+		<div class="sub">
+			<h3>Platters</h3>
+			<div class="item">
+				<span>Meatloaf</span>
+				<span>30</span>
+			</div>
+			<div class="item">
+				<span>Chicken & Sausage</span>
+				<span>89</span>
+			</div>
+		</div>		
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
