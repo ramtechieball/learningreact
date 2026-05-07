@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animations</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      width: 100%;
+      <!-- min-height: 100vh; -->
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: midnightblue;
+      color: white;
+      padding-top: 60px;
+    }
+
+    .animations{
+      width: 100%;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    @keyframes comeUp{
+      from{
+        opacity: 0;
+        transform: translateY(100px);
+      }
+
+      to{
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .head{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: comeUp 1s ease forwards;
+    }
+    .hea1{
+      display: flex;
+      gap: 10px;
+    }
+
+    .hea1,
+    .hea2{
+      font-size: 90px;
+      line-height: 1.1;
+    }
+
+    .hea2{
+      color: deepskyblue;
+    }
+
+    .sub{
+      display: flex;
+      padding-left: 60px;
+      flex-direction: column;
+      align-items: flex-start;
+      animation: comeUp 1.2s ease forwards;
+    }
+
+    .sub1{
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    .boxes{
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      justify-items: center;
+      padding: 0 20px;
+    }
+
+    .box{
+      width: 140px;
+      height: 140px;
+      background: deepskyblue;
+      border-radius: 18px;
+      opacity: 0;
+      animation: comeUp 0.8s ease forwards;
+    }
+
+    .box:nth-child(1){ animation-delay: 0.2s; }
+    .box:nth-child(2){ animation-delay: 0.3s; }
+    .box:nth-child(3){ animation-delay: 0.4s; }
+    .box:nth-child(4){ animation-delay: 0.5s; }
+    .box:nth-child(5){ animation-delay: 0.6s; }
+    .box:nth-child(6){ animation-delay: 0.7s; }
+    .box:nth-child(7){ animation-delay: 0.8s; }
+    .box:nth-child(8){ animation-delay: 0.9s; }
+    .box:nth-child(9){ animation-delay: 1s; }
+    .box:nth-child(10){ animation-delay: 1.1s; }
+    .box:nth-child(11){ animation-delay: 1.2s; }
+    .box:nth-child(12){ animation-delay: 1.3s; }
+
+    .text{
+      width: 100%;
+      height: 60px;
+      background: brown;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    @keyframes moveText{
+      0%{
+        transform: translateX(100%);
+      }
+
+      100%{
+        transform: translateX(-100vw);
+      }
+    }
+
+    .move-text{
+      position: absolute;
+      white-space: nowrap;
+      font-size: 24px;
+      font-weight: bold;
+      animation: moveText 20s linear infinite;
+    }
+
+    .pause:hover .move-text{
+      animation-play-state: paused;
+    }
+
+    .circle{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .c3{
+      padding-left: 60px;
+      font-size: x-large;
+    }
+
+    .round{
+      width: 100%;
+      height: 140px;
+      background-color: beige;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .round img{
+      width: 120px;
+    }
+
+    @keyframes spin{
+      from{
+        transform: rotate(360deg);
+      }
+
+      to{
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes slideUp{
+      0%{
+        transform: translateY(-20px);
+        opacity: 1;
+      }
+
+      100%{
+        transform: translateY(20px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes scaleUp{
+      0%{
+        transform: scale(0.6);
+        opacity: 0;
+      }
+
+      100%{
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    .spin img{
+      animation: spin 2s linear infinite;
+    }
+
+    .slide img{
+      animation: slideUp 2s ease infinite;
+    }
+
+    .scale img{
+      animation: scaleUp 2s ease infinite;
+    }
+
+    .hover-spin:hover img{
+      animation: spin 2s linear infinite;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="animations">
+
+    <div class="head">
+      <h1 class="hea1">CSS <p>Only</p></h1>
+      <h1 class="hea2">Animations</h1>
+    </div>
+
+    <div class="sub">
+      <h1 class="sub1">Build lightweight, performant load</h1>
+      <h1 class="sub1">animations using only CSS</h1>
+    </div>
+
+    <div class="boxes">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <div class="text pause">
+      <div class="move-text">
+        THIS TEXT PAUSES WHEN HOVERED • THIS TEXT PAUSES WHEN HOVERED • THIS TEXT PAUSES WHEN HOVERED
+      </div>
+    </div>
+
+    <div class="text">
+      <div class="move-text">
+        CONTINUOUS MOVING TEXT LEFT FROM RIGHT • CONTINUOUS MOVING TEXT LEFT FROM RIGHT • CONTINUOUS MOVING TEXT LEFT FROM RIGHT
+      </div>
+    </div>
+
+    <div class="circle">
+
+      <h3 class="c3">THIS IS FOR SPIN</h3>
+      <div class="round spin">
+        <img src="https://www.transparentpng.com/thumb/one-piece/HLjiTC-one-piece-simple.png" alt="">
+      </div>
+
+      <h3 class="c3">THIS IS FOR SLIDE UP</h3>
+      <div class="round slide">
+        <img src="https://www.transparentpng.com/thumb/one-piece/HLjiTC-one-piece-simple.png" alt="">
+      </div>
+
+      <h3 class="c3">THIS IS FOR SCALE UP</h3>
+      <div class="round scale">
+        <img src="https://www.transparentpng.com/thumb/one-piece/HLjiTC-one-piece-simple.png" alt="">
+      </div>
+
+      <h3 class="c3">THIS IS FOR HOVER SPIN</h3>
+      <div class="round hover-spin">
+        <img src="https://www.transparentpng.com/thumb/one-piece/HLjiTC-one-piece-simple.png" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
