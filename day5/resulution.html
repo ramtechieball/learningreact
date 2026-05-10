@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anime Responsive Page</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  min-width:100vw;
+  background:black;
+  color:white;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  width:100%;
+}
+
+.container{
+  width:92%;
+  max-width:145rem;
+}
+
+.navbar{
+  width:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:1000;
+  background:black;
+  border-bottom:0.1rem solid dimgray;
+}
+
+.navbar__one{
+  min-height:5.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 0;
+}
+
+.navbar__logo{
+  font-size:clamp(1.7rem,2vw,2.4rem);
+  font-weight:900;
+  letter-spacing:0.15rem;
+}
+
+.navbar__button{
+  padding:0.65em 1.4em;
+  background:darkslategray;
+  border-radius:999px;
+  font-size:1rem;
+  transition:0.3s;
+}
+
+.navbar__button:hover{
+  background:slateblue;
+  transform:translateY(-0.2rem);
+}
+
+.section-nav{
+  position:fixed;
+  bottom:1rem;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:999;
+  display:flex;
+  gap:0.5rem;
+  padding:0.5rem;
+  border-radius:999px;
+  background:gray;
+  border:0.1rem solid darkslategray;
+}
+
+.section-nav__button{
+  padding:0.7em 1.2em;
+  background:darkslategray;
+  border-radius:999px;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+
+.section-nav__button:hover{
+  background:slateblue;
+  transform:translateY(-0.2rem);
+}
+.hero{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:7rem;
+  padding-bottom:7rem;
+  padding-left:3rem;
+}
+
+.hero__one{
+  display:grid;
+  grid-template-columns:1fr 1.2fr 1fr;
+  gap:2rem;
+  align-items:center;
+}
+
+.hero__column{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.hero__image{
+  overflow:hidden;
+  border-radius:1.5rem;
+  opacity:0;
+  animation:imageScale 1s ease forwards;
+}
+
+.hero__image:nth-child(1){
+  animation-delay:0.2s;
+}
+
+.hero__image:nth-child(2){
+  animation-delay:0.4s;
+}
+
+.hero__image:nth-child(3){
+  animation-delay:0.6s;
+}
+
+.hero__image img{
+  height:18rem;
+  object-fit:cover;
+}
+
+.hero__content{
+  display:flex;
+  flex-direction:column;
+  gap:1.2rem;
+  justify-content:center;
+  text-align:center;
+  opacity:0;
+  animation:contentUp 1s ease forwards;
+  animation-delay:0.4s;
+}
+
+.hero__subtitle{
+  font-size:1rem;
+  letter-spacing:0.4rem;
+  color:violet;
+}
+
+.hero__title{
+  font-size:clamp(3rem,7vw,7rem);
+  line-height:0.95;
+  font-weight:900;
+}
+
+.hero__text{
+  max-width:45rem;
+  margin-inline:auto;
+  font-size:1.1rem;
+  line-height:1.8;
+  color:silver;
+}
+
+.hero__buttons{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:0.8em 1.7em;
+  border-radius:999px;
+  transition:0.3s;
+  font-size:1rem;
+}
+
+.btn--primary{
+  background:white;
+  color:black;
+}
+
+.btn--primary:hover{
+  background:lightgray;
+}
+
+.btn--secondary{
+  border:0.1rem solid gray;
+}
+
+.btn--secondary:hover{
+  background:dimgray;
+}
+
+.about{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:6rem 0;
+}
+
+.about__one{
+  text-align:center;
+}
+
+.about__number{
+  font-size:clamp(8rem,22vw,30rem);
+  font-weight:900;
+  color:rgba(255,255,255,0.05);
+}
+
+.about__content{
+  margin-top:-4rem;
+}
+
+.about__title{
+  font-size:clamp(2.5rem,5vw,6rem);
+  margin-bottom:1.5rem;
+}
+
+.about__text{
+  max-width:60rem;
+  margin-inline:auto;
+  font-size:1.2rem;
+  line-height:1.8;
+  color:silver;
+  text-align:center;
+}
+
+.cards{
+  padding:6rem 2rem;
+}
+
+.cards__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+}
+
+.card{
+  background:midnightblue;
+  border:0.1rem solid darkslategray;
+  border-radius:1.5rem;
+  overflow:hidden;
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-0.5rem);
+}
+
+.card__image img{
+  height:18rem;
+  object-fit:cover;
+}
+
+.card__title{
+  padding:1.3rem;
+  text-align:center;
+  font-size:1.4rem;
+}
+
+@keyframes imageScale{
+
+  0%{
+    opacity:0;
+    transform:scale(1.2);
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+}
+
+@keyframes contentUp{
+
+  0%{
+    opacity:0;
+    transform:translateY(3rem);
+  }
+
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+
+@media (min-width:300px) and (max-width:479px){
+
+  .navbar__one{
+    min-height:4.8rem;
+  }
+
+  .navbar__logo{
+    font-size:1.4rem;
+  }
+
+  .navbar__button{
+    font-size:0.9rem;
+    padding:0.55em 1.1em;
+  }
+
+  .section-nav{
+    width:94%;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .section-nav__button{
+    font-size:0.8rem;
+  }
+
+  .hero{
+    padding-top:7rem;
+    padding-bottom:8rem;
+    min-height:auto;
+  }
+
+  .hero__one{
+    grid-template-columns:1fr;
+  }
+
+  .hero__image{
+    display:none;
+  }
+
+  .hero__title{
+    font-size:2.4rem;
+  }
+
+  .hero__subtitle{
+    font-size:0.8rem;
+    letter-spacing:0.2rem;
+  }
+
+  .hero__text{
+    font-size:1rem;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .about{
+    padding:5rem 0;
+  }
+
+  .about__number{
+    font-size:6rem;
+  }
+
+  .about__content{
+    margin-top:-1rem;
+	padding-left:1rem;
+  }
+
+  .about__title{
+    font-size:2rem;
+  }
+
+  .about__text{
+    font-size:1rem;
+  }
+
+  .cards__grid{
+    grid-template-columns:1fr;
+    gap:1.2rem;
+  }
+
+  .card__image img{
+    height:13rem;
+  }
+
+  .card__title{
+    font-size:1.1rem;
+  }
+
+}
+
+@media (min-width:480px) and (max-width:767px){
+
+  .hero__one{
+    grid-template-columns:1fr;
+  }
+
+  .hero__image{
+    display:none;
+  }
+
+  .hero{
+    padding-bottom:8rem;
+  }
+
+  .hero__title{
+    font-size:3.3rem;
+  }
+
+  .about__number{
+    font-size:9rem;
+  }
+
+  .about__content{
+    margin-top:-2rem;
+	padding-left:0.8rem;
+  }
+
+  .cards__grid{
+    grid-template-columns:1fr;
+  }
+
+  .card__image img{
+    height:15rem;
+  }
+
+}
+
+
+@media (min-width:768px) and (max-width:991px){
+
+  .hero__one{
+    grid-template-columns:1fr;
+  }
+
+  .hero__image{
+    display:none;
+  }
+
+  .hero__title{
+    font-size:4.5rem;
+  }
+  
+
+  .cards__grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .card__image img{
+    height:15rem;
+  }
+  .about__content{
+	padding-left:0.8rem;
+  }
+
+  .about__number{
+    font-size:12rem;
+  }
+
+}
+
+@media (min-width:992px) and (max-width:1199px){
+
+  .hero__one{
+    grid-template-columns:1fr 1.2fr;
+  }
+
+  .hero__column:last-child{
+    display:none;
+  }
+
+  .hero__content{
+    text-align:left;
+    align-items:flex-start;
+  }
+
+  .hero__buttons{
+    justify-content:flex-start;
+  }
+  .about__content{
+	padding-left:0.8rem;
+  }
+
+  .cards__grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media (min-width:1200px) and (max-width:1399px){
+
+  .hero__one{
+    grid-template-columns:1fr 1.2fr 1fr;
+  }
+
+  .cards__grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+}
+
+@media (min-width:1400px){
+
+  .hero__image img{
+    height:20rem;
+  }
+
+  .hero__title{
+    font-size:6.5rem;
+  }
+
+  .hero__text{
+    font-size:1.3rem;
+  }
+
+  .cards__grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .card__image img{
+    height:19rem;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+  <div class="container navbar__one">
+
+    <a href="#" class="navbar__logo">
+      rammarket
+    </a>
+
+    <a href="#" class="navbar__button">
+      Buy
+    </a>
+
+  </div>
+
+</header>
+
+<div class="section-nav">
+
+  <a href="#hero" class="section-nav__button">
+    Home
+  </a>
+
+  <a href="#about" class="section-nav__button">
+    26+
+  </a>
+
+  <a href="#cards" class="section-nav__button">
+    Anime Cards
+  </a>
+
+</div>
+
+<section class="hero" id="hero">
+
+  <div class="container hero__one">
+
+    <div class="hero__column">
+
+      <div class="hero__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      </div>
+
+      <div class="hero__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      </div>
+
+      <div class="hero__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      </div>
+
+    </div>
+
+    <div class="hero__content">
+
+      <p class="hero__subtitle">
+        Grand Line Adventure
+      </p>
+
+      <h1 class="hero__title">
+        The One Piece Is Real
+      </h1>
+
+      <p class="hero__text">
+        Explore legendary anime worlds filled
+        with pirates, shinobi and powerful heroes.
+        Discover adventures beyond imagination.
+      </p>
+
+      <div class="hero__buttons">
+
+        <a href="#" class="btn btn--primary">
+          Watch Now
+        </a>
+
+        <a href="#" class="btn btn--secondary">
+          Explore Anime
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero__column">
+
+      <div class="hero__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      </div>
+
+      <div class="hero__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      </div>
+
+      <div class="hero__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="about" id="about">
+
+  <div class="container about__one">
+
+    <h2 class="about__number">
+      26+
+    </h2>
+
+    <div class="about__content">
+
+      <h3 class="about__title">
+        Legendary Anime Worlds
+      </h3>
+
+      <p class="about__text">
+        Explore powerful anime universes filled
+        with pirates, ninjas, soul reapers and
+        legendary warriors beyond imagination.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="cards" id="cards">
+
+  <div class="container">
+
+    <div class="cards__grid">
+
+      <article class="card">
+
+        <div class="card__image">
+          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+        </div>
+
+        <h3 class="card__title">
+          One Piece
+        </h3>
+
+      </article>
+
+      <article class="card">
+
+        <div class="card__image">
+          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+        </div>
+
+        <h3 class="card__title">
+          Naruto
+        </h3>
+
+      </article>
+
+      <article class="card">
+
+        <div class="card__image">
+          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+        </div>
+
+        <h3 class="card__title">
+          Bleach
+        </h3>
+
+      </article>
+
+      <article class="card">
+
+        <div class="card__image">
+          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+        </div>
+
+        <h3 class="card__title">
+          Dragon Ball
+        </h3>
+
+      </article>
+
+      <article class="card">
+
+        <div class="card__image">
+          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+        </div>
+
+        <h3 class="card__title">
+          Attack On Titan
+        </h3>
+
+      </article>
+
+      <article class="card">
+
+        <div class="card__image">
+          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+        </div>
+
+        <h3 class="card__title">
+          Jujutsu Kaisen
+        </h3>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
