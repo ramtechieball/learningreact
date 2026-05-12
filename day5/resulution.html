@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Anime Responsive Page</title>
@@ -12,11 +15,14 @@
   padding:0;
   box-sizing:border-box;
 }
+
 body{
-  min-width:100vw;
+  width:100%;
   background:black;
   color:white;
-  overflow-x:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 a{
@@ -26,42 +32,39 @@ a{
 
 img{
   width:100%;
+  display:block;
 }
 
 .container{
-  width:92%;
-  max-width:145rem;
+  width:clamp(20rem,92%,120rem);
 }
 
 .navbar{
   width:100%;
-  position:fixed;
+  position:sticky;
   top:0;
-  left:0;
   z-index:1000;
   background:black;
   border-bottom:0.1rem solid dimgray;
 }
 
 .navbar__one{
-  min-height:5.5rem;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:1rem 0;
+  padding:0.8rem 0;
 }
 
 .navbar__logo{
-  font-size:clamp(1.7rem,2vw,2.4rem);
+  font-size:clamp(1.6rem,2vw,2.4rem);
   font-weight:900;
   letter-spacing:0.15rem;
 }
 
 .navbar__button{
-  padding:0.65em 1.4em;
+  padding:0.7em 1.4em;
   background:darkslategray;
-  border-radius:999px;
-  font-size:1rem;
+  border-radius:5rem;
   transition:0.3s;
 }
 
@@ -79,16 +82,15 @@ img{
   display:flex;
   gap:0.5rem;
   padding:0.5rem;
-  border-radius:999px;
   background:gray;
   border:0.1rem solid darkslategray;
+  border-radius:5rem;
 }
 
 .section-nav__button{
   padding:0.7em 1.2em;
   background:darkslategray;
-  border-radius:999px;
-  font-size:0.95rem;
+  border-radius:5rem;
   transition:0.3s;
 }
 
@@ -96,96 +98,90 @@ img{
   background:slateblue;
   transform:translateY(-0.2rem);
 }
+
 .hero{
   width:100%;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:7rem;
-  padding-bottom:7rem;
-  padding-left:3rem;
+  display:grid;
+  place-items:center;
+  padding-top:3rem;
+  padding-bottom:1rem;
 }
 
 .hero__one{
   display:grid;
-  grid-template-columns:1fr 1.2fr 1fr;
-  gap:2rem;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
   align-items:center;
 }
 
 .hero__column{
   display:flex;
   flex-direction:column;
-  gap:1rem;
+  gap:0.8rem;
 }
 
 .hero__image{
-  overflow:hidden;
-  border-radius:1.5rem;
+  border-radius:8%;
   opacity:0;
   animation:imageScale 1s ease forwards;
 }
 
-.hero__image:nth-child(1){
+.hero-first{
   animation-delay:0.2s;
 }
 
-.hero__image:nth-child(2){
+.hero-second{
   animation-delay:0.4s;
 }
 
-.hero__image:nth-child(3){
+.hero-third{
   animation-delay:0.6s;
 }
 
 .hero__image img{
-  height:18rem;
+  height:16rem;
   object-fit:cover;
+  border-radius:8%;
 }
 
 .hero__content{
   display:flex;
   flex-direction:column;
-  gap:1.2rem;
-  justify-content:center;
+  align-items:center;
   text-align:center;
+  gap:1rem;
   opacity:0;
   animation:contentUp 1s ease forwards;
   animation-delay:0.4s;
 }
 
 .hero__subtitle{
-  font-size:1rem;
-  letter-spacing:0.4rem;
   color:violet;
+  letter-spacing:0.3rem;
 }
 
 .hero__title{
   font-size:clamp(3rem,7vw,7rem);
-  line-height:0.95;
-  font-weight:900;
+  line-height:0.9;
 }
 
 .hero__text{
-  max-width:45rem;
-  margin-inline:auto;
-  font-size:1.1rem;
+  width:80%;
   line-height:1.8;
   color:silver;
 }
 
 .hero__buttons{
   display:flex;
+  flex-wrap:wrap;
   justify-content:center;
   gap:1rem;
-  flex-wrap:wrap;
 }
 
 .btn{
   padding:0.8em 1.7em;
-  border-radius:999px;
+  border-radius:5rem;
   transition:0.3s;
-  font-size:1rem;
 }
 
 .btn--primary{
@@ -206,56 +202,65 @@ img{
 }
 
 .about{
-  min-height:100vh;
+  width:100%;
   display:flex;
-  align-items:center;
-  padding:6rem 0;
+  justify-content:center;
 }
 
 .about__one{
-  text-align:center;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:1rem 0 2rem;
+  gap:0.5rem;
 }
 
 .about__number{
-  font-size:clamp(8rem,22vw,30rem);
+  font-size:clamp(7rem,20vw,26rem);
   font-weight:900;
-  color:rgba(255,255,255,0.05);
+  line-height:0.75;
+  color:rgba(255,255,255,0.07);
 }
 
 .about__content{
-  margin-top:-4rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
 }
 
 .about__title{
-  font-size:clamp(2.5rem,5vw,6rem);
-  margin-bottom:1.5rem;
+  font-size:clamp(2rem,5vw,5rem);
+  line-height:1;
 }
 
 .about__text{
-  max-width:60rem;
-  margin-inline:auto;
-  font-size:1.2rem;
-  line-height:1.8;
-  color:silver;
+  width:80%;
   text-align:center;
+  line-height:1.5;
+  color:silver;
 }
 
 .cards{
-  padding:6rem 2rem;
+  width:100%;
+  padding-bottom:4rem;
 }
 
 .cards__grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:2rem;
+  gap:1rem;
 }
 
 .card{
   background:midnightblue;
   border:0.1rem solid darkslategray;
-  border-radius:1.5rem;
-  overflow:hidden;
+  border-radius:8%;
   transition:0.4s;
+  display:flex;
+  flex-direction:column;
 }
 
 .card:hover{
@@ -263,14 +268,12 @@ img{
 }
 
 .card__image img{
-  height:18rem;
   object-fit:cover;
+  border-radius:8%;
 }
 
 .card__title{
-  padding:1.3rem;
   text-align:center;
-  font-size:1.4rem;
 }
 
 @keyframes imageScale{
@@ -301,36 +304,15 @@ img{
 
 }
 
-
-@media (min-width:300px) and (max-width:479px){
-
-  .navbar__one{
-    min-height:4.8rem;
-  }
-
-  .navbar__logo{
-    font-size:1.4rem;
-  }
-
-  .navbar__button{
-    font-size:0.9rem;
-    padding:0.55em 1.1em;
-  }
-
-  .section-nav{
-    width:94%;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .section-nav__button{
-    font-size:0.8rem;
-  }
+@media (max-width:480px){
 
   .hero{
-    padding-top:7rem;
-    padding-bottom:8rem;
-    min-height:auto;
+    padding-top:1.5rem;
+    padding-bottom:0.5rem;
+  }
+
+  .about__one{
+    padding:0.5rem 0 1.5rem;
   }
 
   .hero__one{
@@ -342,16 +324,11 @@ img{
   }
 
   .hero__title{
-    font-size:2.4rem;
-  }
-
-  .hero__subtitle{
-    font-size:0.8rem;
-    letter-spacing:0.2rem;
+    font-size:2.2rem;
   }
 
   .hero__text{
-    font-size:1rem;
+    width:100%;
   }
 
   .btn{
@@ -359,81 +336,30 @@ img{
     text-align:center;
   }
 
-  .about{
-    padding:5rem 0;
-  }
-
   .about__number{
-    font-size:6rem;
-  }
-
-  .about__content{
-    margin-top:-1rem;
-	padding-left:1rem;
-  }
-
-  .about__title{
-    font-size:2rem;
+    font-size:5rem;
   }
 
   .about__text{
-    font-size:1rem;
+    width:100%;
   }
 
   .cards__grid{
     grid-template-columns:1fr;
-    gap:1.2rem;
-  }
-
-  .card__image img{
-    height:13rem;
-  }
-
-  .card__title{
-    font-size:1.1rem;
   }
 
 }
 
-@media (min-width:480px) and (max-width:767px){
-
-  .hero__one{
-    grid-template-columns:1fr;
-  }
-
-  .hero__image{
-    display:none;
-  }
+@media (min-width:481px) and (max-width:768px){
 
   .hero{
-    padding-bottom:8rem;
+    padding-top:2rem;
+    padding-bottom:0.5rem;
   }
 
-  .hero__title{
-    font-size:3.3rem;
+  .about__one{
+    padding:0.5rem 0 1.5rem;
   }
-
-  .about__number{
-    font-size:9rem;
-  }
-
-  .about__content{
-    margin-top:-2rem;
-	padding-left:0.8rem;
-  }
-
-  .cards__grid{
-    grid-template-columns:1fr;
-  }
-
-  .card__image img{
-    height:15rem;
-  }
-
-}
-
-
-@media (min-width:768px) and (max-width:991px){
 
   .hero__one{
     grid-template-columns:1fr;
@@ -443,32 +369,41 @@ img{
     display:none;
   }
 
-  .hero__title{
-    font-size:4.5rem;
+  .cards__grid{
+    grid-template-columns:1fr;
   }
-  
+
+}
+
+@media (min-width:769px) and (max-width:1024px){
+
+  .hero{
+    padding-top:2rem;
+    padding-bottom:0.5rem;
+  }
+
+  .about__one{
+    padding:0.5rem 0 1.5rem;
+  }
+
+  .hero__one{
+    grid-template-columns:1fr;
+  }
+
+  .hero__image{
+    display:none;
+  }
 
   .cards__grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .card__image img{
-    height:15rem;
-  }
-  .about__content{
-	padding-left:0.8rem;
-  }
-
-  .about__number{
-    font-size:12rem;
-  }
-
 }
 
-@media (min-width:992px) and (max-width:1199px){
+@media (min-width:1025px) and (max-width:1200px){
 
   .hero__one{
-    grid-template-columns:1fr 1.2fr;
+    grid-template-columns:1fr 1.1fr;
   }
 
   .hero__column:last-child{
@@ -476,15 +411,12 @@ img{
   }
 
   .hero__content{
-    text-align:left;
     align-items:flex-start;
+    text-align:left;
   }
 
   .hero__buttons{
     justify-content:flex-start;
-  }
-  .about__content{
-	padding-left:0.8rem;
   }
 
   .cards__grid{
@@ -493,56 +425,31 @@ img{
 
 }
 
-@media (min-width:1200px) and (max-width:1399px){
-
-  .hero__one{
-    grid-template-columns:1fr 1.2fr 1fr;
-  }
-
-  .cards__grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-}
-
-@media (min-width:1400px){
+@media (min-width:1201px){
 
   .hero__image img{
-    height:20rem;
-  }
-
-  .hero__title{
-    font-size:6.5rem;
-  }
-
-  .hero__text{
-    font-size:1.3rem;
-  }
-
-  .cards__grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .card__image img{
-    height:19rem;
+    height:18rem;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
+<div class="container">
+
 <header class="navbar">
 
-  <div class="container navbar__one">
+  <div class="navbar__one">
 
     <a href="#" class="navbar__logo">
       rammarket
     </a>
 
-    <a href="#" class="navbar__button">
+    <a href="#" class="navbar__button" role="button" aria-label="Go to the Buy area">
       Buy
     </a>
 
@@ -552,15 +459,15 @@ img{
 
 <div class="section-nav">
 
-  <a href="#hero" class="section-nav__button">
+  <a href="#hero" class="section-nav__button" role="button" aria-label="Go to Home section">
     Home
   </a>
 
-  <a href="#about" class="section-nav__button">
+  <a href="#about" class="section-nav__button" role="button" aria-label="Go to 26+ section">
     26+
   </a>
 
-  <a href="#cards" class="section-nav__button">
+  <a href="#cards" class="section-nav__button" role="button" aria-label="Go to Anime Cards section">
     Anime Cards
   </a>
 
@@ -568,20 +475,20 @@ img{
 
 <section class="hero" id="hero">
 
-  <div class="container hero__one">
+  <div class="hero__one">
 
     <div class="hero__column">
 
-      <div class="hero__image">
-        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      <div class="hero__image hero-first">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="One Piece anime">
       </div>
 
-      <div class="hero__image">
-        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      <div class="hero__image hero-second">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Naruto anime">
       </div>
 
-      <div class="hero__image">
-        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      <div class="hero__image hero-third">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Bleach anime">
       </div>
 
     </div>
@@ -599,16 +506,15 @@ img{
       <p class="hero__text">
         Explore legendary anime worlds filled
         with pirates, shinobi and powerful heroes.
-        Discover adventures beyond imagination.
       </p>
 
       <div class="hero__buttons">
 
-        <a href="#" class="btn btn--primary">
+        <a href="#" class="btn btn--primary" role="button" aria-label="Watch Now">
           Watch Now
         </a>
 
-        <a href="#" class="btn btn--secondary">
+        <a href="#" class="btn btn--secondary" role="button" aria-label="Explore Anime">
           Explore Anime
         </a>
 
@@ -618,16 +524,16 @@ img{
 
     <div class="hero__column">
 
-      <div class="hero__image">
-        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      <div class="hero__image hero-first">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Dragon Ball anime">
       </div>
 
-      <div class="hero__image">
-        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      <div class="hero__image hero-second">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Attack On Titan anime">
       </div>
 
-      <div class="hero__image">
-        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
+      <div class="hero__image hero-third">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Jujutsu Kaisen anime">
       </div>
 
     </div>
@@ -638,7 +544,7 @@ img{
 
 <section class="about" id="about">
 
-  <div class="container about__one">
+  <div class="about__one">
 
     <h2 class="about__number">
       26+
@@ -652,8 +558,7 @@ img{
 
       <p class="about__text">
         Explore powerful anime universes filled
-        with pirates, ninjas, soul reapers and
-        legendary warriors beyond imagination.
+        with pirates, ninjas and legendary warriors.
       </p>
 
     </div>
@@ -664,87 +569,86 @@ img{
 
 <section class="cards" id="cards">
 
-  <div class="container">
+  <div class="cards__grid">
 
-    <div class="cards__grid">
+    <article class="card">
 
-      <article class="card">
+      <div class="card__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="One Piece anime card">
+      </div>
 
-        <div class="card__image">
-          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
-        </div>
+      <h3 class="card__title">
+        One Piece
+      </h3>
 
-        <h3 class="card__title">
-          One Piece
-        </h3>
+    </article>
 
-      </article>
+    <article class="card">
 
-      <article class="card">
+      <div class="card__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Naruto anime card">
+      </div>
 
-        <div class="card__image">
-          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
-        </div>
+      <h3 class="card__title">
+        Naruto
+      </h3>
 
-        <h3 class="card__title">
-          Naruto
-        </h3>
+    </article>
 
-      </article>
+    <article class="card">
 
-      <article class="card">
+      <div class="card__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Bleach anime card">
+      </div>
 
-        <div class="card__image">
-          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
-        </div>
+      <h3 class="card__title">
+        Bleach
+      </h3>
 
-        <h3 class="card__title">
-          Bleach
-        </h3>
+    </article>
 
-      </article>
+    <article class="card">
 
-      <article class="card">
+      <div class="card__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Dragon Ball anime card">
+      </div>
 
-        <div class="card__image">
-          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
-        </div>
+      <h3 class="card__title">
+        Dragon Ball
+      </h3>
 
-        <h3 class="card__title">
-          Dragon Ball
-        </h3>
+    </article>
 
-      </article>
+    <article class="card">
 
-      <article class="card">
+      <div class="card__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Attack On Titan anime card">
+      </div>
 
-        <div class="card__image">
-          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
-        </div>
+      <h3 class="card__title">
+        Attack On Titan
+      </h3>
 
-        <h3 class="card__title">
-          Attack On Titan
-        </h3>
+    </article>
 
-      </article>
+    <article class="card">
 
-      <article class="card">
+      <div class="card__image">
+        <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="Jujutsu Kaisen anime card">
+      </div>
 
-        <div class="card__image">
-          <img src="https://i.pinimg.com/736x/79/0d/e5/790de577e85968b5eb3785359b4197c1.jpg" alt="onepiece">
-        </div>
+      <h3 class="card__title">
+        Jujutsu Kaisen
+      </h3>
 
-        <h3 class="card__title">
-          Jujutsu Kaisen
-        </h3>
-
-      </article>
-
-    </div>
+    </article>
 
   </div>
 
 </section>
 
+</div>
+
 </body>
+
 </html>
