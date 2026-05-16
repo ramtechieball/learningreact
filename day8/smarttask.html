@@ -33,7 +33,6 @@
   <div class="container">
 
     <h1>Smart Task Manager</h1>
-	<p>Total Tasks:<span id="count">0</span></p>
 
     <div class="top">
 
@@ -65,60 +64,27 @@
     const taskList   = document.getElementById("taskList");
 
     const clearBtn   = document.getElementById("clearBtn");
-	const count      = document.getElementById("count");
 
 
 
     function renderTasks(filteredTasks = tasks){
-	count.textContent = tasks.length;
 
     taskList.innerHTML = "";
 
     if(filteredTasks.length === 0){
-
-        taskList.innerHTML =
-        `<p class="empty">No matches found</p>`;
-
+        taskList.innerHTML = `<p class="empty">No matches found</p> `;
         return;
 
     }
 
     filteredTasks.forEach(task => {
-	
-		
+
         const div = document.createElement("div");
 
         div.className = "task";
 
-        div.innerHTML = `
-          ${task.name}
-		  <button class="editbtn">edit</button> 
-          <button class="deletebtn">delete</button>`;
-		  
-		  
-		const editbtn=div.querySelector(".editbtn");
-		editbtn.addEventListener("click",()=>{
-			taskInput.value=task.name;
-			addBtn.textContent = "edit";
-			addBtn.onclick = () => {
-			task.name = taskInput.value;
-			taskInput.value = "";
-			addBtn.textContent = "Add";
-			addBtn.onclick = addTask;
-			renderTasks();
-			};
-		});
-		
-		const deleteBtn = div.querySelector(".deletebtn");
-        deleteBtn.addEventListener("click", () => {
-            
-              const index = tasks.findIndex(t => t.id === task.id);
-            
-                tasks.splice(index, 1);
-            
-              renderTasks(tasks);
-            
-            });
+        div.innerHTML = task.name;
+
         taskList.appendChild(div);
 
     });
@@ -129,6 +95,7 @@
       const taskName = taskInput.value;
 
       tasks.push({
+
         name: taskName
 
       });
@@ -160,7 +127,7 @@
 
       taskList.innerHTML = `<p class="empty">No tasks yet. Add one above!</p>`;
 	}
-    addBtn.onclick = addTask;
+    addBtn.addEventListener("click", addTask);
 
     searchInput.addEventListener("input", searchTasks);
 
